@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+{% block body %}
+  <div class="signup">
+    <h1>signup</h1>
+    {{ form.email.label }}
+    {{ form.email }}
+
+    {{ form.username.label }}
+    {{ form.username }}
+
+    {{ form.password.label }}
+    {{ form.password }}
+
+    {{ form.confirm_password.label }}
+    {{ form.confirm_password }}
+
+    {{ form.submit.label }}
+    {{ form.submit }}
+  </div>
+{% endblock %}
