@@ -1,12 +1,12 @@
 from flask_wtf import FlaskForm
 import email_validator
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, SelectMultipleField, RadioField, IntegerField
-from wtforms.validators import InputRequired, DataRequired, EqualTo, NumberRange, Email
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, SelectMultipleField, RadioField, IntegerField, EmailField
+from wtforms.validators import InputRequired, DataRequired, EqualTo, NumberRange, Length
 
 
 class signupForm(FlaskForm):
-    email = StringField('', validators=[DataRequired('please enter your email adress'), Email('this field requires an valid email adress')])
-    username = StringField('', validators=[DataRequired('please enter an username'), NumberRange(min=1, max=20)])
-    password = PasswordField('', validators=[DataRequired('please enter an password'), EqualTo('conform_password', message='Passwords must match')])
-    confirm_password = PasswordField('', validators=[DataRequired('please enter your password again')])
+    email = EmailField('enter your email adress', validators=[DataRequired('please enter your email adress')])
+    username = StringField('username', validators=[DataRequired('please enter an username'), Length(min=6, max=20)])
+    password = PasswordField('password', validators=[DataRequired('please enter an password')])
+    confirm_password = PasswordField('confirm password', validators=[DataRequired('please enter your password again'), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('create acount')

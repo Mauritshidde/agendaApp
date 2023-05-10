@@ -10,19 +10,31 @@
 {% block body %}
   <div class="signup">
     <h1>signup</h1>
-    {{ form.email.label }}
-    {{ form.email }}
+    <form method="post" action="">
+      {{ form.hidden_tag() }}
+  
+      {{ form.email.label }}
+      {{ form.email }}
+  
+      <!-- {{ form.username.label }} -->
+      {{ form.username }}
+  
+      <!-- {{ form.password.label }} -->
+      {{ form.password }}
+  
+      <!-- {{ form.confirm_password.label }} -->
+      {{ form.confirm_password }}
+  
+      <!-- {{ form.submit.label }} -->
+      {{ form.submit }}
 
-    {{ form.username.label }}
-    {{ form.username }}
-
-    {{ form.password.label }}
-    {{ form.password }}
-
-    {{ form.confirm_password.label }}
-    {{ form.confirm_password }}
-
-    {{ form.submit.label }}
-    {{ form.submit }}
+      {% for error in form.errors %}
+        {% if error == "confirm_password" %}
+          <p class="help-block">passwords do not match</p>
+        {% else %}
+          <p class="help-block">{{ error }}</p>
+        {% endif %}
+      {% endfor %}
+    </form>
   </div>
 {% endblock %}
