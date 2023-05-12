@@ -1,3 +1,17 @@
 body {
   background-color: white;
 }
+
+.login_field {
+  background-color: red;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 0.5vw;
+  width: 10vw;
+}
+
+.login_button {
+  border: 100px;
+}

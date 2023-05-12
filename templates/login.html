@@ -8,5 +8,21 @@
 
 
 {% block body %}
+    <div>
+        <form method="post", action="">
+            <!-- {{ form.hidden_tag() }} -->
+            
+            <div class="">
+                {{ form.username(class_="login_field") }}
+            </div>
 
+            <div class="">
+                {{ form.password(class_="login_field") }}
+            </div>
+
+            <div class="">
+                {{ form.submit(class_="login_button") }}
+            </div>
+        </form>
+    </div>
 {% endblock %}

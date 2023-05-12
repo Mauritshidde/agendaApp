@@ -10,3 +10,8 @@ class signupForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired('please enter an password')])
     confirm_password = PasswordField('confirm password', validators=[DataRequired('please enter your password again'), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('create acount')
+
+class loginForm(FlaskForm):
+    username = StringField('username', validators=[DataRequired('Please enter your username'), Length(min=6, max=20)])
+    password = PasswordField('password', validators=[DataRequired('Please enter your password')])
+    submit = SubmitField('login')
