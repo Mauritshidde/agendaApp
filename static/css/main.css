@@ -3,7 +3,7 @@ body {
 }
 
 .login_field {
-  background-color: red;
+  background-color: white;
   border-style: solid;
   border-color: black;
   border-width: 2px;
@@ -14,4 +14,18 @@ body {
 
 .login_button {
   border: 100px;
+}
+
+.login_box {
+  padding-left: 0.3vw;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 0.5vw;
+  /* width: 30vw; */
+  max-width: 30vw;
+  min-width: 0.1vw;
+
+  display: flex;
+  justify-content: center;
 }

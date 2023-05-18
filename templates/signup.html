@@ -2,7 +2,7 @@
 
 
 {% block head %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
 
@@ -16,16 +16,12 @@
       {{ form.email.label }}
       {{ form.email }}
   
-      <!-- {{ form.username.label }} -->
       {{ form.username }}
   
-      <!-- {{ form.password.label }} -->
       {{ form.password }}
   
-      <!-- {{ form.confirm_password.label }} -->
       {{ form.confirm_password }}
   
-      <!-- {{ form.submit.label }} -->
       {{ form.submit }}
 
       {% for error in form.errors %}

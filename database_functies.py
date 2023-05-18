@@ -1,7 +1,11 @@
-import os, hashlib
+import os, hashlib, random, string
 import mysql.connector as mysql
 
+from flask import Flask, render_template, url_for, redirect, request, session, make_response
+
 from passwords import HOST, PASSWORD, DATABASE, USER
+
+    
 
 def write_database(sql, value):
     conn = mysql.connect(
@@ -21,10 +25,29 @@ def read_database(sql, value):
     c.execute(sql, value)
 
     data = c.fetchall()
-    
     conn.close()
-    
-    return data[0]
+
+    if data == []:
+        return "er zit niks in"
+    else:
+        return data[0]
+
+def add_session_to_db(session_id, username):
+    sql_r = "SELECT id FROM sessions WHERE sessionID = %s"
+    value_r = (session_id, )
+    data = read_database(sql_r, value_r)
+
+    sql_u = "SELECT id FROM sessions WHERE username = %s"
+    value_u = (username, )
+    data_username = read_database(sql_u, value_u)
+
+    if data == "er zit niks in" and data_username == "er zit niks in":
+        sql = "INSERT INTO sessions (sessionID, username) VALUES (%s, %s)"
+        val = (session_id, username, )
+        write_database(sql, val)
+        return True
+    else:
+        return False
 
 def add_user(email, username, password):
     try:
@@ -57,3 +80,20 @@ def authenticate(username, password):
         return True
     else:
         return False
+
+def authenticated(func):
+    def wrapper():
+        return func()
+        try:
+            if session['logged_in']:
+                return func()
+            else:
+                return(redirect('signup'))
+        except:
+            return(redirect('signup'))
+    return wrapper
+
+def get_random_string(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str

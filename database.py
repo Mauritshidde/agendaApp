@@ -28,9 +28,16 @@ daily_Tasks = '''CREATE TABLE dailyTasks(
     text TEXT NOT NULL
 )'''
 
+sessions = '''CREATE TABLE sessions(
+   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   sessionID CHAR(16) NOT NULL UNIQUE,
+   username CHAR(100) NOT NULL UNIQUE
+)'''
+
 c.execute(delete)
 c.execute(delete2)
 c.execute(users)
 c.execute(daily_Tasks)
+c.execute(sessions)
 
 conn.close()

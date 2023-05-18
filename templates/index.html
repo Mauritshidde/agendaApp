@@ -2,11 +2,17 @@
 
 
 {% block head %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 
 
 
 {% block body %}
-
+    <div>
+        <div class="top_bar">
+            <!-- <div class="login_button">
+                <a href="/login"> Login </a>
+            </div> -->
+        </div>
+    </div>
 {% endblock %}

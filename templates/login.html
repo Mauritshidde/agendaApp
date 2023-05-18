@@ -2,13 +2,13 @@
 
 
 {% block head %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
 
 
 {% block body %}
-    <div>
+    <div class="login_box">
         <form method="post", action="">
             <!-- {{ form.hidden_tag() }} -->
             
