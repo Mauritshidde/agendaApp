@@ -14,5 +14,20 @@
                 <a href="/login"> Login </a>
             </div> -->
         </div>
+
+        <div class="agenda_vak">
+            <div class="dagen_balk">
+                 
+            </div>
+
+            <div class="data_balk">
+                {% for i in range(0, dict_lenght) %}
+                    <!-- if today -->
+                    <p>{{day_numbers[i]}}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+
     </div>
 {% endblock %}

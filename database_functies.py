@@ -83,7 +83,7 @@ def authenticate(username, password):
 
 def authenticated(func):
     def wrapper():
-        return func()
+        return func() # disable to make the authetication work
         try:
             if session['logged_in']:
                 return func()
